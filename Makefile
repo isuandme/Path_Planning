@@ -1,7 +1,6 @@
 all:
-	g++ path.cpp main.cpp -o main
-build:
-	g++ -c main.cpp path.cpp
+	g++ wayqueue.cpp path.cpp main.cpp -o main
+
 
 clean:
 	rm *.o main
