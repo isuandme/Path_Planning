@@ -16,19 +16,19 @@ int main(int argv,char* argc[])
     path.initializeMap();
     
     /* Generate Mesh */
-    path.setBoxMeshAttributes(7, 6, 4, 5, 3);
+    path.setBoxMeshAttributes(7, 8, 3, 4, 4);
     path.initializeBoxMesh();
     path.initializeBasicPath(que);
     
     /* Obstacles added to the map */
     path.initialzieObstacleList();
     path.addObstacle(10,10,3);
-    path.printObstacleList();
     path.addObstacle(6,23,3);
-    path.printObstacleList();
     
+    // Do an obstacle check everytime it gets to a weight point. If there is an interference, opt to a sub map to get around.
     
     path.printMap();
     que.display();
+    
     return 0;
 }

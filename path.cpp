@@ -56,7 +56,7 @@ void Path::printMap()
 /*--------------------------- MESH ---------------------------*/
 
 /*  */
-void Path::setBoxMeshAttributes(int cols, int rows, int startX, int startY, int spacing)
+void Path::setBoxMeshAttributes(int rows,int cols, int startX, int startY, int spacing)
 {
     this->mesh_rows = rows;   // sets number of rows that will be meshed
     this->mesh_cols = cols;   // sets the number of cols that will be meshed
@@ -124,19 +124,19 @@ void Path::addObstacle(int at_x, int at_y, int rad)
     obs_temp.rad = rad;
     obs_list->push_back(obs_temp); // pushes the obstacel to the obs_list.
     map[at_y][at_x].type = 'X'; // sets the obstacle positions to the map.
-    
-    int x, y;
-    for(y = 0; y < mesh_cols; y++) {
-        for(x = 0; x < mesh_rows; x++) {
-            int mesh_x, mesh_y;
-            mesh_x = mesh[y][x].x;
-            mesh_y = mesh[y][x].y;
-            if(check_obstacle(&mesh_x, &mesh_y)) {
-                cout << "(x, y): " "(" << mesh_x << ", " << mesh_y << ")" << endl;
-                
-            }
-        }
-    }
+
+//    int x, y;
+//    for(y = 0; y < mesh_cols; y++) {
+//        for(x = 0; x < mesh_rows; x++) {
+//            int mesh_x, mesh_y;
+//            mesh_x = mesh[y][x].x;
+//            mesh_y = mesh[y][x].y;
+//            if(check_obstacle(&mesh_x, &mesh_y)) {
+//                cout << "check_obstacle: @ (" << mesh_x << ", " << mesh_y << ")" << endl;
+//            }
+//        }
+//    }
+
 }
 
 /*  */
@@ -151,9 +151,11 @@ bool Path::check_obstacle(int *x, int *y)
         int rads = obs_list->at(i).rad;
         int rad_sqr = rads * rads;
         if(dist <= rad_sqr) {
+            //cout << "interference: true" << endl;
             return true;
         }
     }
+    //cout << "interference: false" << endl;
     return false;
 }
 
@@ -161,7 +163,6 @@ bool Path::check_obstacle(int *x, int *y)
 void Path::printObstacleList()
 {
     int i, sz;
-    
     sz = obs_list->size();
     cout << obs_list->size() << endl;
     for(i = 0; i < sz; i++)

@@ -51,7 +51,7 @@ public:
     void initializeMap();
     
     /*  */
-    void setBoxMeshAttributes(int cols, int rows, int startX, int startY, int spacing);
+    void setBoxMeshAttributes(int rows,int cols, int startX, int startY, int spacing);
     
     /*  */
     void initializeBoxMesh();
